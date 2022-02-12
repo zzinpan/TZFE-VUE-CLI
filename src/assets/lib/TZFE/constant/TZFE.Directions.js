@@ -1,9 +1,11 @@
-(function(){
+
+import Direction from "./TZFE.Direction.js";
+
+var Directions = Object.keys( Direction ).map( function( key ){
 	
-	TZFE.Directions = Object.keys( TZFE.Direction ).map( function( key ){
-		
-		return TZFE.Direction[ key ];
-		
-	} );
+	return Direction[ key ];
 	
-})();
+} );
+
+export default Directions;
+

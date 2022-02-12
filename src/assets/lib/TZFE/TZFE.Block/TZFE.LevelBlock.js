@@ -1,29 +1,27 @@
-(function(){
+
+import Block from "./TZFE.Block.js";
+
+function LevelBlock( value ){
 	
-	function LevelBlock( value ){
-		
-		TZFE.Block.apply( this, arguments );
-		this.value = value;
-		
-	}
+	Block.apply( this, arguments );
+	this.value = value;
 	
-	LevelBlock.prototype.__proto__ = TZFE.Block.prototype;
-	LevelBlock.prototype.equals = function( other ){
-		
-		return 
-			this.id == other.id &&
-			this.value == other.value;
-		
-	};
-	LevelBlock.prototype.clone = function(){
-		
-		var block = new TZFE.LevelBlock( this.value );
-		block.id = this.id;
-		
-		return block;
-		
-	};
+}
+
+LevelBlock.prototype.__proto__ = Block.prototype;
+LevelBlock.prototype.equals = function( other ){
 	
-	TZFE.LevelBlock = LevelBlock;
+	return this.id == other.id && this.value == other.value;
 	
-})();
+};
+LevelBlock.prototype.clone = function(){
+	
+	var block = new LevelBlock( this.value );
+	block.id = this.id;
+	
+	return block;
+	
+};
+
+export default LevelBlock;
+

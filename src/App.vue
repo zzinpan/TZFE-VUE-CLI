@@ -1,15 +1,26 @@
 <template>
 
-  <div class="container"></div>
+<div class="container">
+	<intro></intro>
+	<game></game>
+</div>
   
 </template>
 
 <script>
 
+import intro from "./views/intro.vue";
+import game from "./views/game.vue";
+
 export default {
 	
-	name: 'App',
-	components: {}
+	name: 'app',
+	components: {
+		
+		"intro": intro,
+		"game": game,
+		
+	}
 	
 }
 
@@ -23,7 +34,7 @@ export default {
 	top: 0px;
 	width: 100%;
 	height: 100%;
-	background-color: red;
+	background-color: black;
 }
 
 </style>

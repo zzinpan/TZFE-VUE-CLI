@@ -1,30 +1,29 @@
-/**
- * TZFE.Block Interface
- * 상속 시, prototype 항목 모두 구현 필요
- */
-(function(){
+
+import Util from "../TZFE.Util.js";
+import UpdateType from "./constant/TZFE.Block.UpdateType.js";
+
+function Block(){
 	
-	function Block(){
-		
-		this.id = TZFE.Util.getRandomId();
-		
-	}
+	this.id = Util.getRandomId();
 	
-	Block.prototype.equals = function( other ){
-		
-		return this.id == other.id;
-		
-	};
+}
+
+Block.UpdateType = UpdateType;
+
+Block.prototype.equals = function( other ){
 	
-	Block.prototype.clone = function(){
-		
-		var block = new TZFE.Block();
-		block.id = this.id;
-		
-		return block;
-		
-	};
+	return this.id == other.id;
 	
-	TZFE.Block = Block;
+};
+
+Block.prototype.clone = function(){
 	
-})();
+	var block = new Block();
+	block.id = this.id;
+	
+	return block;
+	
+};
+
+export default Block;
+
