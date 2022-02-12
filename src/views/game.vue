@@ -1,7 +1,6 @@
 <template>
 	
-	<div class="score-board">score-board</div>
-	<div class="game-board">game-board</div>
+	<div class="board">game-board</div>
   
 </template>
 
@@ -12,6 +11,8 @@ export default {
 	name: 'game',
 	components: {},
 	
+	props: [ "rows", "columns" ],
+	
 	data(){
 		
 		return {
@@ -19,16 +20,8 @@ export default {
 			
 		};
 		
-	},
-	
-	activated(){
-		
-	},
-	
-	mounted(){
-		
-		
 	}
+	
 	
 }
 
@@ -36,9 +29,5 @@ export default {
 
 <style scope>
 
-.score-board { 
-	position: absolute; 
-	background-color: red;
-}
 
 </style>

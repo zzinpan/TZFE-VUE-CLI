@@ -1,6 +1,6 @@
 <template>
 
-  <div class="container"></div>
+	<div class="logo">TZFE</div>
   
 </template>
 
@@ -8,7 +8,7 @@
 
 export default {
 	
-	name: 'App',
+	name: 'intro',
 	components: {}
 	
 }
@@ -17,13 +17,12 @@ export default {
 
 <style scope>
 
-.container {
+.logo {
 	position: absolute;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	height: 100%;
-	background-color: red;
+	display: inline-block;
+	font-size: 48px;
+	font-weight: bold;
+	color: white;
 }
 
 </style>
