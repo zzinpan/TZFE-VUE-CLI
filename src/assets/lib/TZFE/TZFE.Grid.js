@@ -1,8 +1,9 @@
 
-import Vector2 from "./Vector2.js";
-import Directions from "./constant/Directions.js";
+import Vector2 from "./TZFE.Vector2.js";
+import Directions from "./constant/TZFE.Directions.js";
 import Block from "./TZFE.Block/TZFE.Block.js";
 import LevelBlock from "./TZFE.Block/TZFE.LevelBlock.js";
+import UpdateType from "./TZFE.Block/constant/TZFE.Block.UpdateType.js";
 import Util from "./TZFE.Util.js";
 
 function Grid( columnCount, rowCount ){
@@ -98,7 +99,8 @@ Grid.prototype.move = function( direction ){
 			
 			
 			var i2 = i1 + direction[prop];
-			while(true){
+			const w = true;
+			while( w ){
 				
 				if( i2 < 0 ){
 					
@@ -127,7 +129,7 @@ Grid.prototype.move = function( direction ){
 				
 				if( self[ prop + "Count" ] <= i2 ){
 					
-					var updateBlock = {
+					let updateBlock = {
 						
 						type: Block.UpdateType.MOVE,
 						id: target.id,
@@ -158,7 +160,7 @@ Grid.prototype.move = function( direction ){
 					// 3. 대상의 왼쪽이 블럭이면, 합친 이력이 있는지 판단
 					if( before.merged === true ){
 						
-						var updateBlock = {
+						let updateBlock = {
 							
 							type: Block.UpdateType.MOVE,
 							id: target.id,
@@ -185,7 +187,7 @@ Grid.prototype.move = function( direction ){
 						
 						if( before.value == target.value ){
 							
-							var updateBlock = {
+							let updateBlock = {
 								
 								type: Block.UpdateType.REMOVE,
 								id: target.id
@@ -210,7 +212,7 @@ Grid.prototype.move = function( direction ){
 							
 						}else{
 							
-							var updateBlock = {
+							let updateBlock = {
 								
 								type: Block.UpdateType.MOVE,
 								id: target.id,

@@ -1,3 +1,15 @@
+import Vector2 from "./TZFE.Vector2.js";
+import Direction from "./constant/TZFE.Direction.js";
+import Grid from "./TZFE.Grid.js";
+import LevelBlock from "./TZFE.Block/TZFE.LevelBlock.js";
+import Util from "./TZFE.Util.js";
+
+import Block "./TZFE.Block/TZFE.Block.js";
+import LevelBlock "./TZFE.Block/TZFE.LevelBlock.js";
+
+import Direction "./constant/TZFE.Direction.js";
+import Directions "./constant/TZFE.Directions.js";
+
 
 function TZFE(){
 	
@@ -6,9 +18,17 @@ function TZFE(){
 	
 }
 
+TZFE.Vector2 = Vector2;
+TZFE.Util = Util;
+TZFE.Grid = Grid;
+TZFE.Block = Block;
+TZFE.LevelBlock = LevelBlock;
+TZFE.Direction = Direction;
+TZFE.Directions = Directions;
+
 TZFE.prototype.save = function(){
 	
-	var vector2 = new TZFE.Vector2();
+	var vector2 = new Vector2();
 	var before = this.store[ this.store.length - 1 ];
 	
 	
@@ -51,37 +71,22 @@ TZFE.prototype.save = function(){
 	
 };
 
+TZFE.prototype.move = function( direction ){
+	
+	this.grid.move( direction );
+	
+};
 
-TZFE.prototype.up = function(){
-	
-	this.grid.move( TZFE.Direction.UP );
-	
-};
-TZFE.prototype.right = function(){
-	
-	this.grid.move( TZFE.Direction.RIGHT );
-	
-};
-TZFE.prototype.down = function(){
-	
-	this.grid.move( TZFE.Direction.DOWN );
-	
-};
-TZFE.prototype.left = function(){
-	
-	this.grid.move( TZFE.Direction.LEFT );
-	
-};
 TZFE.prototype.clear = function( rowCount, columnCount ){
 	
-	this.grid = new TZFE.Grid( rowCount, columnCount );
+	this.grid = new Grid( rowCount, columnCount );
 	
 };
 
 TZFE.prototype.addBlock = function( block ){
 	
 	if( block == null ){
-		block = new TZFE.LevelBlock( TZFE.Util.getRandomInteger( 1, 2 ) );
+		block = new LevelBlock( Util.getRandomInteger( 1, 2 ) );
 	}
 	this.grid.addBlock( block );
 	

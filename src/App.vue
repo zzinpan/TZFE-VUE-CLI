@@ -2,7 +2,8 @@
 
 <div class="container">
 	<intro class="intro" v-bind:class="intro.class"></intro>
-	<game class="game" v-bind:class="game.class"></game>
+	<scoreBoard class="scoreBoard" v-bind:class="scoreBoard.class"></scoreBoard>
+	<board class="board" v-bind:class="board.class" v-bind:tzfe="tzfe"></board>
 </div>
   
 </template>
@@ -10,7 +11,10 @@
 <script>
 
 import intro from "./components/intro.vue";
-import game from "./views/game.vue";
+import board from "./components/board.vue";
+import scoreBoard from "./components/scoreBoard.vue";
+
+import TZFE from "./assets/lib/TZFE/TZFE.js";
 
 export default {
 	
@@ -18,13 +22,24 @@ export default {
 	components: {
 		
 		"intro": intro,
-		"game": game,
+		"board": board,
+		"scoreBoard": scoreBoard
 		
 	},
 	
 	data(){
 		
 		return {
+		
+			tzfe: (()=>{
+				
+				const tzfe = new TZFE();
+				tzfe.clear( 4, 4 );
+				tzfe.addBlock();
+				tzfe.addBlock();
+				return tzfe;
+				
+			})(),
 			
 			intro: {
 				
@@ -36,7 +51,17 @@ export default {
 				
 			},
 			
-			game: {
+			board: {
+				
+				"class": {
+					
+					show: false
+					
+				}
+				
+			},
+			
+			scoreBoard: {
 				
 				"class": {
 					
@@ -47,6 +72,16 @@ export default {
 			}
 			
 		}
+		
+	},
+	
+	created(){
+		
+		window.addEventListener("keydown", ( e )=>{
+			
+			console.log( e.keyCode );
+			
+		}, false);
 		
 	},
 	
@@ -66,7 +101,8 @@ export default {
 		
 		setTimeout(()=>{
 			
-			this.game.class.show = true;
+			this.scoreBoard.class.show = true;
+			this.board.class.show = true;
 			
 		}, 4000);
 		
@@ -100,6 +136,7 @@ export default {
 
 .intro {
 
+	position: absolute;
 	transform: translate( -50%, -50% );
 	top: 50%;
 	left: 50%;
@@ -114,25 +151,47 @@ export default {
 
 	margin-top: 0px;
 	opacity: 1;
-	transition: all 1s;
+	transition: all 2s;
 
 }
 
-.game {
+.board {
 
+	position: absolute;
 	opacity: 0;
+	transform: translate( -50%, -50% );
 	top: 50%;
 	left: 50%;
 	transition: all 2s;
 
 }
 
-.game.show {
+.board.show {
 
 	opacity: 1;
-	margin-top: 0px;
-	transition: all 1s;
+	transition: all 2s;
 
 }
+
+.scoreBoard {
+
+	position: absolute;
+	opacity: 0;
+	top: 0px;
+	left: 0px;
+	width: calc( 100% - 20px );
+	margin-top: -50px;
+	transition: all 2s;
+	
+}
+
+.scoreBoard.show {
+	
+	margin-top: 0px;
+	opacity: 1;
+	transition: all 1s;
+	
+}
+
 
 </style>

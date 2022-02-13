@@ -18,7 +18,6 @@ export default {
 <style scope>
 
 .logo {
-	position: absolute;
 	display: inline-block;
 	font-size: 48px;
 	font-weight: bold;

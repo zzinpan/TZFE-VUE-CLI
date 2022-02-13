@@ -1,7 +1,7 @@
 
 import Vector2 from "../TZFE.Vector2.js"
 
-var Direction = {
+const Direction = {
 	
 	UP: new Vector2( 0, -1 ),
 	RIGHT: new Vector2( 1, 0 ),
@@ -9,6 +9,12 @@ var Direction = {
 	LEFT: new Vector2( -1, 0 )
 		
 };
+
+Object.defineProperty( Direction, {
+	
+	value: "get"
+	
+} );
 
 export default Direction;
 	
