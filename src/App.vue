@@ -80,6 +80,7 @@ export default {
 		window.addEventListener("keydown", ( e )=>{
 			
 			console.log( e.keyCode );
+			e.key
 			
 		}, false);
 		
