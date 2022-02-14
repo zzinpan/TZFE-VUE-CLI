@@ -304,7 +304,7 @@ Grid.prototype.addBlock = function( block ){
 	var targetBlank = blanks[ randomIndex ];
 	this.rows[ targetBlank.y ][ targetBlank.x ] = block;
 	
-	return true;
+	return targetBlank;
 	
 };
 

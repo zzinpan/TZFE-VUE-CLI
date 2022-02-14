@@ -3,7 +3,7 @@
 <div class="container">
 	<intro class="intro" v-bind:class="intro.class"></intro>
 	<scoreBoard class="scoreBoard" v-bind:class="scoreBoard.class"></scoreBoard>
-	<board class="board" v-bind:class="board.class" v-bind:tzfe="tzfe"></board>
+	<board class="board" :is="tzfe" v-bind:class="board.class" v-bind:tzfe="tzfe"></board>
 </div>
   
 </template>
@@ -77,10 +77,22 @@ export default {
 	
 	created(){
 		
+		console.log( "[App.vue] created" );
+		
 		window.addEventListener("keydown", ( e )=>{
 			
-			console.log( e.keyCode );
-			e.key
+			const direction = TZFE.Direction.getByKeyCode( e.keyCode );
+			if( direction == null ){
+				return;
+			}
+			
+			this.tzfe.move( direction );
+			const moved = this.tzfe.save();
+			if( moved == false ){
+				return;
+			}
+// 			this.tzfe.addBlock();
+			console.log( e.keyCode, this.tzfe.print() );
 			
 		}, false);
 		

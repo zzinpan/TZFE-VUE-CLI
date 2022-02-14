@@ -1,14 +1,12 @@
 import Vector2 from "./TZFE.Vector2.js";
-import Direction from "./constant/TZFE.Direction.js";
 import Grid from "./TZFE.Grid.js";
-import LevelBlock from "./TZFE.Block/TZFE.LevelBlock.js";
 import Util from "./TZFE.Util.js";
 
-import Block "./TZFE.Block/TZFE.Block.js";
-import LevelBlock "./TZFE.Block/TZFE.LevelBlock.js";
+import Block from "./TZFE.Block/TZFE.Block.js";
+import LevelBlock from "./TZFE.Block/TZFE.LevelBlock.js";
 
-import Direction "./constant/TZFE.Direction.js";
-import Directions "./constant/TZFE.Directions.js";
+import Direction from "./constant/TZFE.Direction.js";
+import Directions from "./constant/TZFE.Directions.js";
 
 
 function TZFE(){
@@ -88,7 +86,7 @@ TZFE.prototype.addBlock = function( block ){
 	if( block == null ){
 		block = new LevelBlock( Util.getRandomInteger( 1, 2 ) );
 	}
-	this.grid.addBlock( block );
+	return this.grid.addBlock( block );
 	
 };
 

@@ -1,17 +1,20 @@
 <template>
 	
 	<div class="board" v-bind:style="style">
-		<template v-for="( row, rowIndex ) in tzfe.grid.rows" v-bind:key="rowIndex">
-			<template v-for="( block, columnIndex ) in row">
-				<block class="block" v-if="block != null" v-bind:key="columnIndex" v-bind:block="block" v-bind:rowIndex="rowIndex" v-bind:columnIndex="columnIndex"></block>
-			</template>
-		</template>
+		<!-- 흠.. rows가 갱신되기때문에 신규 객체가 생성되어 애니메이션이 작동안하는듯 -->
+<!-- 		<keep-alive> -->
+		
+		<block class="block" :is="blocks" v-bind:block="block" v-bind:rowIndex="rowIndex" v-bind:columnIndex="columnIndex"></block>
+		
+
+<!-- 		</keep-alive>		 -->
 	</div>
   
 </template>
 
 <script>
 
+import TZFE from "../assets/lib/TZFE/TZFE.js";
 import block from "./block.vue";
 
 export default {
@@ -23,6 +26,9 @@ export default {
 	
 	data(){
 		
+		const b = new TZFE.LevelBlock( 4 );
+		const v = this.tzfe.addBlock( b );
+		
 		return {
 			
 			style: {
@@ -32,6 +38,11 @@ export default {
 				
 			},
 			
+			blocks: "a",
+			
+			block: b,
+			rowIndex: v.y,
+			columnIndex: v.x
 			
 		};
 		
@@ -44,6 +55,29 @@ export default {
 		
 		this.style.width = columnCount * 100 + "px";
 		this.style.height = rowCount * 100 + "px";
+		
+	},
+	
+	methods: {
+		
+		getBlocks(){
+			
+			return this.tzfe.grid.rows.reduce(( blocks, row )=>{
+				
+				row.forEach(( block )=>{
+					
+					if( block == null ){
+						return;
+					}
+					blocks[ block.id ] = block;
+					
+				});
+				
+				return blocks;
+				
+			}, {});
+			
+		}
 		
 	}
 	

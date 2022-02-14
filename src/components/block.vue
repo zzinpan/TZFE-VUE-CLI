@@ -1,5 +1,5 @@
 <template>
-
+	
 	<div class="block" v-bind:style="style">{{block.value}}</div>
   
 </template>
@@ -18,13 +18,17 @@ export default {
 			
 			style: {
 				
-				left: `${ this.rowIndex * 100 }px`,
-				top: `${ this.columnIndex * 100 }px`
+				left: `${ this.columnIndex * 100 }px`,
+				top: `${ this.rowIndex * 100 }px`
 				
 			}
 			
 		};
 		
+	},
+	
+	created(){
+		console.log("객체생성ㄷ");
 	},
 	
 	watch: {
@@ -63,6 +67,8 @@ export default {
 	font-size: 40px;
 	box-shadow: 0px 0px 0px 1px white;
 	border-radius: 10px;
+	
+	transition: left, top 0.5s;
 	
 }
 
