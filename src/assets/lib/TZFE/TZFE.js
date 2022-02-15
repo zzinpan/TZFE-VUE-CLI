@@ -8,6 +8,8 @@ import LevelBlock from "./TZFE.Block/TZFE.LevelBlock.js";
 import Direction from "./constant/TZFE.Direction.js";
 import Directions from "./constant/TZFE.Directions.js";
 
+import Plugin from "./plugin/TZFE.Plugin.js";
+
 
 function TZFE(){
 	
@@ -94,6 +96,17 @@ TZFE.prototype.print = function(){
 	
 	console.clear();
 	console.log( this.grid.toString() );
+	
+};
+
+
+TZFE.addPlugin = function( plugin ){
+	
+	if( plugin instanceof Plugin ){
+		
+		plugin.setup( TZFE );
+		
+	}
 	
 };
 

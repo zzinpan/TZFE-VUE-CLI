@@ -15,6 +15,8 @@ import board from "./components/board.vue";
 import scoreBoard from "./components/scoreBoard.vue";
 
 import TZFE from "./assets/lib/TZFE/TZFE.js";
+import View from "./assets/lib/TZFE/plugin/TZFE.View/TZFE.View.js";
+TZFE.addPlugin( View );
 
 export default {
 	
