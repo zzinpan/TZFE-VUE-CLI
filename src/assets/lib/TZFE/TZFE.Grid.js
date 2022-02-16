@@ -62,6 +62,35 @@ Grid.prototype.setBlockByPosition = function( vector2, block ){
 	
 };
 
+Grid.prototype.getPositionById = function( id, vector2 ){
+	
+	if( vector2 == null ){
+		vector2 = new Vector2();
+	}
+	
+	for( var y=0; y<this.rows.length; ++y ){
+		
+		var row = this.rows[ y ];
+		for( var x=0; x<row.length; ++x ){
+		
+			var block = row[ x ];
+			if( block == null ){
+				continue;
+			}
+			
+			if( block.id == id ){
+				
+				vector2.set( x, y );
+				return vector2;
+				
+			}
+			
+		}
+		
+	}
+	
+};
+
 Grid.prototype.move = function( direction ){
 
 	if( Directions.indexOf( direction ) < 0 ){
@@ -296,7 +325,7 @@ Grid.prototype.addBlock = function( block ){
 	var blanks = this.getBlanks();
 	
 	if( blanks.length == 0 ){
-		return false;
+		return;
 	}
 	
 	var randomIndex = Math.floor( Math.random() * blanks.length );

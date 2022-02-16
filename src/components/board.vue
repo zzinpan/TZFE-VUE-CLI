@@ -37,6 +37,7 @@ export default {
 		this.style.height = rowCount * 100 + "px";
 		
 		this.tzfe.createView( this.$el );
+		this.tzfe.resize();
 		
 	},
 	
