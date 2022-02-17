@@ -93,7 +93,7 @@ export default {
 			if( moved == false ){
 				return;
 			}
-// 			this.tzfe.addBlock();
+			this.tzfe.addBlock();
 			console.log( e.keyCode, this.tzfe.print() );
 			
 		}, false);

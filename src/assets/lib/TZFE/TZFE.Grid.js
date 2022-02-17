@@ -368,6 +368,27 @@ Grid.prototype.getMaxLevelBlock = function(){
 	
 };
 
+Grid.prototype.getBlockById = function( id ){
+	
+	for( var y=0; y<this.rows.length; ++y ){
+		
+		var row = this.rows[ y ];
+		var block = row.find(function( block ){
+			
+			return block != null && block.id == id;
+			
+		});
+		
+		if( block != null ){
+			
+			return block;
+			
+		}
+		
+	}
+	
+};
+
 Grid.prototype.toString = function(){
 	
 	var self = this;

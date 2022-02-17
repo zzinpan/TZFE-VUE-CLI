@@ -93,8 +93,7 @@ TZFE.prototype.addBlock = function( block ){
 };
 
 TZFE.prototype.print = function(){
-	
-	console.clear();
+
 	console.log( this.grid.toString() );
 	
 };
